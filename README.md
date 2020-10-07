@@ -1,10 +1,17 @@
-My docker example for the laravel + react (or other frontend library).
+My docker example for the local laravel + react (or other frontend library) projects.
 
 ### `OCTOBER 2020`
 
 ### `difficulty level: 2 of 10`
 
-#`EN`:
+# Components: 
+
+- [php:7.4-fpm-alpine](https://registry.hub.docker.com/_/php) (build)
+- [mysql:8](https://registry.hub.docker.com/_/mysql) (image)
+- [nginx:stable-alpine](https://hub.docker.com/_/nginx) (image)
+- [phpmyadmin/phpmyadmin](https://registry.hub.docker.com/r/phpmyadmin/phpmyadmin) (image)
+
+# `EN`:
 
 # commands:
 
@@ -33,6 +40,7 @@ My docker example for the laravel + react (or other frontend library).
  - копировать `.env.example` в `.env`
  - Если папки не создались - создать папки `mysql` и `src`
  - Проверить работоспособность контейнера можно создав файл по пути `src/public/index.php` (написать там что-то) и запустив в браузере `localhost/`
+ - Для использования данной сборки контейнеров на боевом сервере её нужно немного переконфигурировать
 
 ## По работе проекта:
 
