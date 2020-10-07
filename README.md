@@ -10,6 +10,8 @@ My docker example for the local laravel + react (or other frontend library) proj
 - [mysql:8](https://registry.hub.docker.com/_/mysql) (image)
 - [nginx:stable-alpine](https://hub.docker.com/_/nginx) (image)
 - [phpmyadmin/phpmyadmin](https://registry.hub.docker.com/r/phpmyadmin/phpmyadmin) (image)
+- [composer:latest](https://registry.hub.docker.com/_/composer) (image)
+- [library/node](https://registry.hub.docker.com/_/node) (image, npm)
 
 # `EN`:
 
@@ -29,7 +31,11 @@ My docker example for the local laravel + react (or other frontend library) proj
 
 # Команды:
 
-- `docker-compose build && docker-compose up -d` - создание контейнера (его запуск и по этой команде можно пересоздавать(после изменений))
+- `docker-compose build && docker-compose up -d` - создание контейнера 
+(его запуск и по этой команде можно пересоздавать(после изменений))
+
+- `docker-compose up -d --build` - другая версия той же команды 
+- `docker-compose down` - удаляет контейнеры
 
 <hr/>
 
@@ -61,6 +67,20 @@ My docker example for the local laravel + react (or other frontend library) proj
 - Создается отдельный файл конфигурации в папке `./nginx` с названием `default.conf`  -
  данные об этом указываются в настройке контейнера в `docker-compose.yml` в настройках nginx в `volumes`
 
+## Работа с composer контейнером:
 
+- После билда этот контейнер в состоянии отключенного.
+- Выполнять команды для composer нужно с префиксом `--rm` - так как composer создает команду, по выполнении которой - команда должна быть удалена. 
+Иначе будет создан ещё один контейнер. Пример - узнать версию `docker-compose run --rm composer -V`
+
+## Работа с npm контейнером:
+
+- Так же с префиксом `--rm` выполнять команды
+
+## Работа с artisan контейнером:
+
+- Так же с префиксом `--rm` выполнять команды
+- Условие - проект должен лежать в папке src (без laravel проекта контейнер будет создан, но не будет работать, будет выдавать ошибку)
+- пример узнать версию `docker-compose run --rm artisan -V` 
 
 <hr/>
