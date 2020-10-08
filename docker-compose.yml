@@ -2,6 +2,8 @@ version: "3.7"
 
 networks:
   laravel:
+  app-shared:
+    driver: bridge
 
 services:
   nginx:
@@ -17,6 +19,7 @@ services:
       - mysql
     networks:
       - laravel
+      - app-shared
 
   phpmyadmin:
     image: phpmyadmin/phpmyadmin
@@ -59,6 +62,7 @@ services:
       - "9000:9000"
     networks:
       - laravel
+      - app-shared
 
   composer:
     image: library/composer:latest
