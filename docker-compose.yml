@@ -65,11 +65,14 @@ services:
       - app-shared
 
   composer:
-    image: library/composer:latest
+    build:
+      context: ./php/composer
+      dockerfile: Dockerfile
     container_name: composer${APP_NAME}
     volumes:
       - ./src:${APP_PATH}
     working_dir: ${APP_PATH}
+    entrypoint: ['composer']
     networks:
       - laravel
 

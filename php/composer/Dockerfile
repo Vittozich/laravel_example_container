@@ -28,4 +28,12 @@ RUN apk add --no-cache \
       libpng-dev \
     && rm -rf /tmp/*
 
-ADD composer/php.ini /usr/local/etc/php
+ADD php.ini /usr/local/etc/php
+
+#Всё что выше копируется из Dockerfile уровня выше (php)
+
+# Install composer
+ENV COMPOSER_HOME /composer
+ENV PATH ./vendor/bin:/composer/vendor/bin:$PATH
+ENV COMPOSER_ALLOW_SUPERUSER 1
+RUN curl -s https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin/ --filename=composer
