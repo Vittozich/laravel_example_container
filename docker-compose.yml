@@ -37,10 +37,12 @@ services:
     container_name: mysql${APP_NAME}
     restart: unless-stopped
     tty: true
+    command: --innodb_use_native_aio=0
     ports:
       - "3306:3306"
     volumes:
       - ./mysql:/var/lib/mysql
+      - ./mysqlconf:/etc/mysql/conf.d
     environment:
       MYSQL_DATABASE: ${MYSQL_DATABASE}
       MYSQL_USER: ${MYSQL_USER}
