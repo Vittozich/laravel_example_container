@@ -29,6 +29,8 @@ services:
       - '3001:80'
     environment:
       PMA_HOST: mysql
+    volumes:
+      - ./php/composer/php.ini:/usr/local/etc/php/php.ini
     networks:
       - laravel
 
